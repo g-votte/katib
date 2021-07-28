@@ -104,7 +104,7 @@ class OptunaService(api_pb2_grpc.SuggestionServicer, HealthServicer):
                 trial_number = self.trial_katib_name_to_optuna_number[assignments_key]
                 del self.trial_katib_name_to_optuna_number[assignments_key]
 
-                value = trial.target_metric.value
+                value = float(trial.target_metric.value)
                 self.study.tell(trial_number, value)
 
     @staticmethod
